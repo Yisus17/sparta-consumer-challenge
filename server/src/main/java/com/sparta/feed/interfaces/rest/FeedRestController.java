@@ -1,6 +1,8 @@
 package com.sparta.feed.interfaces.rest;
 
-import com.sparta.feed.domain.model.entities.Load;
+import com.sparta.feed.application.command.RecordCommandService;
+import com.sparta.feed.application.query.RecordQueryService;
+import com.sparta.feed.domain.model.entities.LoadBatch;
 import com.sparta.feed.interfaces.rest.transform.BatchMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,19 +18,20 @@ import java.io.IOException;
 public class FeedRestController implements FeedController{
 
     private final BatchMapper batchMapper;
+    private final RecordCommandService recordCommandService;
+    private final RecordQueryService recordQueryService;
 
     @PostMapping("/load/{provider}")
     @Override
     public int load(@PathVariable("provider") String provider, @RequestBody byte[] content) throws IOException {
-        Load load = batchMapper.from(content);
-        return load.getRecords().size();
+        LoadBatch loadBatch = batchMapper.from(content);
+        return recordCommandService.loadRecordByProvider(loadBatch, provider);
     }
 
     @GetMapping("/data/{provider}/total")
     @Override
     public int total(@PathVariable("provider") String provider) {
-        System.out.println("------TOTAL------");
-        return 0;
+        return recordQueryService.getTotalRecordsByProvider(provider);
     }
 
 }

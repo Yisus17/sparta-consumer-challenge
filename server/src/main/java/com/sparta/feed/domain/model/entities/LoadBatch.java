@@ -6,7 +6,7 @@ import java.util.List;
 
 @Value
 @Builder
-public class Load {
+public class LoadBatch {
     private long numberOfRecords;
     private List<Record> records;
 }

@@ -1,9 +1,9 @@
 package com.sparta.feed.interfaces.rest.transform;
 
-import com.sparta.feed.domain.model.entities.Load;
+import com.sparta.feed.domain.model.entities.LoadBatch;
 
 import java.io.IOException;
 
 public interface BatchMapper {
-    Load from(byte[] data) throws IOException;
+    LoadBatch from(byte[] data) throws IOException;
 }
