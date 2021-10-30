@@ -26,7 +26,6 @@ public class RecordRepositoryVolatile  implements RecordRepository{
     @Override
     public void save(Record record, String provider) {
         addRecord(provider, record);
-        System.out.println("----");
     }
 
     @Override
