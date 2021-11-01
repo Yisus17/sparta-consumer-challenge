@@ -1,0 +1,22 @@
+// Batch
+{
+  "numberOfRecords": "Long",
+  "records" : [
+    {
+      "recordIndex": "Long",
+      "timestamp": "Long",
+      "city": "String",
+      "numberBytesSensorData": "integer", // Number of bytes used in following sensorData section
+      "SensorCollection": {
+        "numberOfSensors": "integer",
+        "sensors" : [
+          {
+            "id": "String",
+            "measure": "integer"
+          }
+        ]
+      },
+      "crc32SensorsData": "Long" // crc32 of all bytes present in the sensorData section
+    }
+  ]
+}
