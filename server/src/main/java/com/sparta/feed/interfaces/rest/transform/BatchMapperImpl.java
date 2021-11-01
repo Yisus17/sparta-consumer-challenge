@@ -1,10 +1,10 @@
 package com.sparta.feed.interfaces.rest.transform;
 
-import com.sparta.feed.domain.model.exceptions.FailChecksumException;
-import com.sparta.feed.domain.model.entities.Load;
-import com.sparta.feed.domain.model.entities.Record;
-import com.sparta.feed.domain.model.entities.Sensor;
-import com.sparta.feed.domain.model.entities.SensorCollection;
+import com.sparta.feed.domain.exceptions.FailChecksumException;
+import com.sparta.feed.domain.entities.Batch;
+import com.sparta.feed.domain.entities.Record;
+import com.sparta.feed.domain.entities.Sensor;
+import com.sparta.feed.domain.entities.SensorCollection;
 import com.sparta.feed.interfaces.rest.transform.utils.BatchValidator;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ public class BatchMapperImpl implements BatchMapper {
     private final BatchValidator batchValidator;
 
     @Override
-    public Load from(byte[] inputData) throws IOException {
+    public Batch from(byte[] inputData) throws IOException {
 
         final ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(inputData);
         final DataInputStream dataInputStream = new DataInputStream(byteArrayInputStream);
@@ -36,7 +36,7 @@ public class BatchMapperImpl implements BatchMapper {
             records.add(record);
         }
 
-        return Load.builder()
+        return Batch.builder()
             .numberOfRecords(numberOfRecords)
             .records(records)
             .build();

@@ -1,4 +1,4 @@
-package com.sparta.feed.domain.model.entities;
+package com.sparta.feed.domain.entities;
 
 import lombok.Builder;
 import lombok.Value;

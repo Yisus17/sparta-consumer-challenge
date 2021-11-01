@@ -1,6 +1,6 @@
 package com.sparta.feed.interfaces.rest.transform.utils;
 
-import com.sparta.feed.domain.model.entities.SensorCollection;
+import com.sparta.feed.domain.entities.SensorCollection;
 
 import java.io.IOException;
 
