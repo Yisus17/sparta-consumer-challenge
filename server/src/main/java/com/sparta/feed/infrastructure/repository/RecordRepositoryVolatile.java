@@ -1,15 +1,13 @@
 package com.sparta.feed.infrastructure.repository;
 
-import com.sparta.feed.domain.model.entities.Record;
+import com.sparta.feed.domain.entities.Record;
+import com.sparta.feed.domain.exceptions.FailedConnectionVolatileDBException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -24,19 +22,29 @@ public class RecordRepositoryVolatile  implements RecordRepository{
     private final Map<String, List<Record>> inMemoryDB;
 
     @Override
-    public void save(Record record, String provider) {
-        addRecord(provider, record);
+    public Record save(Record record, String provider) {
+        return addRecord(provider, record);
     }
 
     @Override
     public List<Record> getRecordsByProvider(String provider) {
-       return inMemoryDB.get(provider);
+       final List<Record> records = inMemoryDB.get(provider);
+       if(records == null){
+           return asList();
+       }
+       return records;
     }
 
-    private void addRecord(String provider, Record record) {
-        inMemoryDB
-            .computeIfAbsent(provider, list -> new ArrayList<>())
-            .add(record);
+    private Record addRecord(String provider, Record record) {
+        try {
+            inMemoryDB
+                .computeIfAbsent(provider, list -> new ArrayList<>())
+                .add(record);
+
+            return record;
+        } catch (Exception e){
+            throw new FailedConnectionVolatileDBException("RecordRepositoryVolatile", e.getMessage());
+        }
     }
 
 

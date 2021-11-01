@@ -1,7 +1,7 @@
 package com.sparta.feed.application.command;
 
-import com.sparta.feed.domain.model.entities.LoadBatch;
+import com.sparta.feed.domain.entities.Batch;
 
 public interface RecordCommandService {
-    int loadRecordByProvider(LoadBatch data, String provider);
+    int loadRecordsByProvider(Batch data, String provider);
 }

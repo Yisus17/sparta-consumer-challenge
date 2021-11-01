@@ -1,6 +1,6 @@
 package com.sparta.feed.application.query;
 
-import com.sparta.feed.domain.model.entities.Record;
+import com.sparta.feed.domain.entities.Record;
 import com.sparta.feed.infrastructure.repository.RecordRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
