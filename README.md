@@ -91,6 +91,8 @@ message Sensor {
 #### [CLIENT] Commands :outbox_tray:
 - `java -jar client/sparta-client.jar`: clean the generated build dir
 
+#### Swagger
+http://localhost:8080/swagger-ui.html
 
 #### Author
 Make with 🔥 by Jesús Arévalo :technologist:
