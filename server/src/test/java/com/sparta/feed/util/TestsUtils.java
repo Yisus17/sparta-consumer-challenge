@@ -5,9 +5,18 @@ import com.sparta.feed.domain.entities.Record;
 import com.sparta.feed.domain.entities.Sensor;
 import com.sparta.feed.domain.entities.SensorCollection;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import static java.util.Arrays.asList;
 
 public class TestsUtils {
+
+    public static final Path BASE_TEST_RESOURCES_MESSAGE =
+        Paths.get("src", "test", "resources", "message");
+    public static final String INPUT_DATA_FILE = "byte_array_input_data.txt";
 
     public static Batch createBatchWith0Records() {
         return Batch.builder().numberOfRecords(0).records(asList()).build();
@@ -105,4 +114,21 @@ public class TestsUtils {
                 Sensor.builder().id("1acb46ec-32f5-4bf9-a3bc-65ea6f101a83").measure(7875).build()))
             .build();
     }
+
+    public static byte[] createInputData() throws IOException {
+        final String inputDataAsString =
+            Files.readString(BASE_TEST_RESOURCES_MESSAGE.resolve(Paths.get(INPUT_DATA_FILE)));
+
+        final String[] byteValues =
+            inputDataAsString.substring(1, inputDataAsString.length() - 1).split(",");
+        final byte[] inputDataAsByteArray = new byte[byteValues.length];
+
+        for (int i = 0; i < byteValues.length; i++) {
+            inputDataAsByteArray[i] = Byte.parseByte(byteValues[i].trim());
+        }
+
+        return inputDataAsByteArray;
+    }
+
+
 }
