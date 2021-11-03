@@ -91,6 +91,6 @@ message Sensor {
 #### [CLIENT] Commands :outbox_tray:
 - `java -jar client/sparta-client.jar`: clean the generated build dir
 
-<br>
-##### Author
-Make with 🔥 by Jesús Arévalo [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/jarevalodev.svg?style=social&label=Follow%20%40jarevalodev)](https://twitter.com/jarevalodev)
+
+#### Author
+Make with 🔥 by Jesús Arévalo :technologist:
