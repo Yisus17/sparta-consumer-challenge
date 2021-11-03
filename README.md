@@ -89,7 +89,7 @@ message Sensor {
 - `mvn spring-boot:run`: download the dependencies & run the application
 
 #### [CLIENT] Commands :outbox_tray:
-- `java -jar client/sparta-client.jar`: clean the generated build dir
+- `java -jar client/sparta-client.jar`:run client
 
 #### Swagger
 http://localhost:8080/swagger-ui.html
