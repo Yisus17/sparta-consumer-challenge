@@ -18,7 +18,7 @@ This client will perform two tasks: it will work as the feed that will send the 
 
 The server consists of two parts, it has defined the two endpoints a POST method called 'load', that will receive the data from the client provided, and a GET method called 'total', that will be the method that the client will use to request the total of readings sent by provider.
 
-###Some awesome notes :green_book::pencil2:
+### Some awesome notes :green_book::pencil2:
 
 - The client will connect to http://localhost:8080 to find the API.
 - We are not using a database to store the data, just doing it in memory.
